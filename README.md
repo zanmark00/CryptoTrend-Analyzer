@@ -66,11 +66,7 @@ CryptoTrend Analyzer/
    ```bash
    python -m venv venv
    source venv/bin/activate  # On macOS/Linux
-   
-   # For Windows (Command Prompt):
-   # venv\Scripts\activate
-   # For Windows (PowerShell):
-   # .\venv\Scripts\Activate.ps1
+   venv\Scripts\activate  # On Windows
    ```
 
 3. **Install Dependencies:**
