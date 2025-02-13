@@ -1,0 +1,17 @@
+# Virtual environment folder
+venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Data directories (if you don't want to track data files)
+data/raw/
+data/processed/
+data/preprocessed/
+data/combined/
+data/visualizations/
+
+# IDE-specific files
+.vscode/
+.idea/
