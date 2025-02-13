@@ -86,7 +86,6 @@ CryptoTrend Analyzer/
 
 To run the entire application, simply execute:
 
-    ```bash
-    python main.py
-    ```
-
+   ```bash
+   python main.py
+   ```
