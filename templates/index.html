@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Data Collection &amp; Visualization Dashboard</title>
+  </head>
+  <body>
+    <h1>Data Collection &amp; Visualization Dashboard</h1>
+    
+    <!-- Collect Data Section -->
+    <button id="collect-button">Collect Data</button>
+    <h2>Collection Log</h2>
+    <pre id="collect-log" style="background-color: #f0f0f0; padding: 10px; max-height:200px; overflow:auto;"></pre>
+    
+    <hr>
+    
+    <!-- Visualize Data Section -->
+    <button id="visualize-button">Visualize Data</button>
+    <h2>Visualization Log</h2>
+    <pre id="visualize-log" style="background-color: #f0f0f0; padding: 10px; max-height:200px; overflow:auto;"></pre>
+    
+    <h2>Visualizations</h2>
+    <div id="visualizations">
+      <img id="bar-plot" src="" alt="Trending Coins Bar Plot" style="max-width: 600px; display: none;">
+      <br>
+      <img id="pie-chart" src="" alt="Trending Coins Reddit Pie Chart" style="max-width: 600px; display: none;">
+    </div>
+    
+    <script>
+      document.getElementById("collect-button").addEventListener("click", function(){
+          var button = this;
+          button.disabled = true;
+          button.textContent = "Collecting Data...";
+          
+          fetch("/collect")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("collect-log").textContent = data.log;
+                button.disabled = false;
+                button.textContent = "Collect Data";
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Error occurred during data collection.");
+                button.disabled = false;
+                button.textContent = "Collect Data";
+            });
+      });
+      
+      document.getElementById("visualize-button").addEventListener("click", function(){
+          var button = this;
+          button.disabled = true;
+          button.textContent = "Visualizing Data...";
+          
+          fetch("/visualize")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("visualize-log").textContent = data.log;
+                // If the image URLs are valid, display the images.
+                if (data.bar_plot && data.pie_chart) {
+                    var barPlotImg = document.getElementById("bar-plot");
+                    var pieChartImg = document.getElementById("pie-chart");
+                    barPlotImg.src = data.bar_plot;
+                    pieChartImg.src = data.pie_chart;
+                    barPlotImg.style.display = "block";
+                    pieChartImg.style.display = "block";
+                }
+                button.disabled = false;
+                button.textContent = "Visualize Data";
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Error occurred during visualization.");
+                button.disabled = false;
+                button.textContent = "Visualize Data";
+            });
+      });
+    </script>
+  </body>
+</html>

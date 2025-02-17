@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data Collection Log</title>
+  <!-- Bootstrap 4 for styling -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .log-container {
+      padding: 20px;
+      margin: 30px auto;
+      max-width: 900px;
+      border: 1px solid #dee2e6;
+      border-radius: 0.25rem;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .log-container h2, .log-container h3, .log-container h4 {
+      margin-top: 20px;
+    }
+    .log-content {
+      margin-top: 20px;
+      font-family: 'Courier New', Courier, monospace;
+      color: #343a40;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+<div class="container log-container">
+  <h2>Data Collection Log</h2>
+  <div class="log-content">
+    <!-- The log is HTML-formatted; using |safe renders it as HTML -->
+    {{ data.log|safe }}
+  </div>
+  <hr>
+  <div class="summary">
+    <p class="text-success">
+      <strong>Successful Collections:</strong> {{ data.successful_collection|join(', ') }}
+    </p>
+    <p class="text-danger">
+      <strong>Failed Collections:</strong>
+      {% if data.failed_collection %}
+        {{ data.failed_collection|join(', ') }}
+      {% else %}
+        None
+      {% endif %}
+    </p>
+  </div>
+</div>
+</body>
+</html>

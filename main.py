@@ -43,8 +43,8 @@ def main():
 
     # Define the project root (where main.py and config.py reside)
     project_root = os.path.dirname(os.path.abspath(__file__))
-    # The scripts folder is a subdirectory of the project root.
-    scripts_dir = os.path.join(project_root, "scripts")
+    # The backend folder is a subdirectory of the project root.
+    scripts_dir = os.path.join(project_root, "backend")
 
     # List of extraction scripts.
     extraction_scripts = [
@@ -56,7 +56,7 @@ def main():
         "collect_yahoo.py"
     ]
     
-    # List of preprocessing, visualization, and analysis scripts.
+    # List of preprocessing, visualization, and analysis backend.
     preprocessing_scripts = [
         "preprocess_data.py"
     ]

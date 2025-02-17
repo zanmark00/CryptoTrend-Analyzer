@@ -1,17 +1,14 @@
-# Virtual environment folder
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore virtual environment
 venv/
 
-# Python cache files
-__pycache__/
-*.pyc
+# Ignore configuration files
+conf.py
 
-# Data directories (if you don't want to track data files)
-data/raw/
-data/processed/
-data/preprocessed/
-data/combined/
-data/visualizations/
-
-# IDE-specific files
-.vscode/
-.idea/
+# Ignore data files
+data/*.csv
+data/*.json
